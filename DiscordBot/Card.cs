@@ -1,6 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
+/// <summary>
+/// Data class that is used to deserialize messages from Deckbrew's API
+/// </summary>
 public class Card
 {
     [JsonProperty("name")]

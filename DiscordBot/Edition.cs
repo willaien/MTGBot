@@ -1,5 +1,8 @@
 ﻿using Newtonsoft.Json;
 
+/// <summary>
+/// Data class that is used to deserialize messages from Deckbrew's API
+/// </summary>
 public class Edition
 {
     [JsonProperty("set")]

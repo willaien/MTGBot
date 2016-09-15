@@ -41,12 +41,15 @@ namespace DiscordBot
             // Distinct out the card names, using a case-insensitive comparer.
             var cardNames = matches.Select(x => x.Groups[1].Value).Distinct(StringComparer.InvariantCultureIgnoreCase);
 
+
+            // Loop through the names, look up against Deckbrew's API and return a response for each mentioned card.
             foreach (var cardName in cardNames)
             {
                 using (var webClient = new WebClient())
                 {
                     try
                     {
+                        // For more information about Deckbrew's API, see: http://deckbrew.com/api
                         var response = webClient.DownloadString($"http://api.deckbrew.com/mtg/cards?name={cardName}");
                         var cards = JsonConvert.DeserializeObject<List<Card>>(response);
                         if (cards.Count > 0)
